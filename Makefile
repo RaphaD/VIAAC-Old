@@ -1,6 +1,6 @@
 all:
 	cd music; make
-	cd callendar_2_0; make
+	cd callendar; make
 
 clean:
 	cd music; make clean

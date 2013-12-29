@@ -16,6 +16,11 @@ Activity::Activity(std::vector<std::string> vector){
 	this->_hBegin=Hour(vector[1]);
 	this->_dEnd=Day(vector[2]);
 	this->_hEnd=Hour(vector[3]);
+	for(unsigned i(0);i<vector[4].size();++i){
+		if(vector[4][i]=='~'){
+			vector[4][i]=' ';
+		}
+	}
 	this->_name=vector[4];
 }
 

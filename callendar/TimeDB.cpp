@@ -108,14 +108,20 @@ void TimeDB::add(Activity actiP){
 		std::cout << "Error while opening file " << this->_dbFile << std::endl;
 	}else{
 		std::string contennu;
-		std::getline(fichierR,contennu);
-		std::vector<std::string> inter=split(contennu,' ');
-		Activity actiC=Activity(inter);
-		while((std::getline(fichierR,contennu)) && !this->isSmaller(actiP,actiC)){
+		bool stop(false);
+		while((std::getline(fichierR,contennu)) && !stop){
 			std::cout << contennu << std::endl;
-			activities.push_back(actiC);
 			std::vector<std::string> inter=split(contennu,' ');
-			actiC=Activity(inter);
+			Activity actiC=Activity(inter);
+			if(this->isSmaller(actiP,actiC))
+				stop=true;
+			activities.push_back(actiC);
+			std::cout << "----- ----- ----- -----" << std::endl;
+		}
+		std::cout << "end while" << std::endl;
+		activities.push_back(actiP);
+		if(contennu!=""){
+			activities.push_back(Activity(split(contennu,' ')));
 		}
 		while(std::getline(fichierR,contennu)){
 			activities.push_back(Activity(split(contennu,' ')));
@@ -140,16 +146,21 @@ time_t TimeDB::fillTm(Day day,Hour hour){
 }
 
 bool TimeDB::isSmaller(Activity const& acti1,Activity const& acti2){
+	std::cout << "===== ===== ISSMALLER ===== =====" << std::endl;
 	time_t beg1=this->fillTm(acti1.getBeginDate(),acti1.getBeginHour());
 	time_t end1=this->fillTm(acti1.getEndDate(),acti1.getEndHour());
 	time_t beg2=this->fillTm(acti2.getBeginDate(),acti2.getBeginHour());
 	time_t end2=this->fillTm(acti2.getEndDate(),acti2.getEndHour());
 	if(difftime(beg1,beg2)<0){
+		std::cout << "acti1 newer begin" << std::endl;
 		return true;
 	}else if(difftime(beg1,beg2)==0){
+		std::cout << "acti1 same begin" << std::endl;
 		if(difftime(end1,end2)<0){
+			std::cout << "acti1 newer end" << std::endl;
 			return true;
 		}else if(difftime(end1,end2)==0){
+			std::cout << "acti1 same end" << std::endl;
 			std::vector<std::string> names;
 			names.push_back(acti1.getName());
 			names.push_back(acti2.getName());

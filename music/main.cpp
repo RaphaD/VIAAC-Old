@@ -8,7 +8,7 @@
 #include "MusicMaker.hpp"
 #include "libTreater.cpp"
 
-#define PORT "/dev/ttyACM0"
+#define PORT "/dev/ttyACM1"
 
 #define __STATISTICS
 
