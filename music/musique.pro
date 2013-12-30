@@ -16,7 +16,7 @@ HEADERS += PortSender.hpp \
     MusicMaker.hpp \
     Song.hpp
 
-SOURCES += main.cpp PortSender.cpp \
+SOURCES += PortSender.cpp \
     MusicMaker.cpp \
     statFile.cpp \
     Song.cpp \

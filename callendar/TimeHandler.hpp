@@ -11,7 +11,7 @@
 #include "Activity.hpp"
 #include "libFunc.hpp"
 
-#define CALLENDAR_DB "CALLENDAR.txt"
+#define CALLENDAR_DB "./callendar/CALLENDAR.txt"
 
 class TimeHandler
 {

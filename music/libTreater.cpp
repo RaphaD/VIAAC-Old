@@ -1,9 +1,4 @@
-#include <iostream>
-#include <sys/types.h>
-#include <dirent.h>
-#include <vector>
-
-#define MUSIC_LIB "./music/"
+#include "libTreater.hpp"
 
 bool isMP3(char file[]){
 	unsigned size=strlen(file);

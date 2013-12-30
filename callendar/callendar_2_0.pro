@@ -2,8 +2,7 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= qt
 
-SOURCES += main.cpp \
-    TimeHandler.cpp \
+SOURCES += TimeHandler.cpp \
     TimeDB.cpp \
     Day.cpp \
     Activity.cpp \
