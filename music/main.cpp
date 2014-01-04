@@ -10,14 +10,6 @@
 
 #define PORT "/dev/ttyACM0"
 
-#define __STATISTICS
-
-#ifdef __STATISTICS
-	#define STAT_FILE "STAT_FILE.txt"
-	long double turn(0);
-	long unsigned number_turn(0);
-#endif
-
 int main(){
 	//QApplication app(argc, argv);
 

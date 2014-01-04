@@ -1,21 +1,14 @@
 #include "MusicMaker.hpp"
 
-#define TAILLE_SPECTRE 512
-#define REFRESH 21500
 
 MusicMaker::MusicMaker(PortSender* port,std::vector<std::string>& res) :
 	_port(port),_musics(res),_commands(std::vector<char>()),_goOn(true),_song(0)
 	{
-	#ifdef __STATISTICS
-		openStat(STAT_FILE);
-	#endif
 
 	this->_commands.push_back('n');
 	this->_commands.push_back('p');
 	this->_commands.push_back('s');
 	this->_commands.push_back('q');
-
-	QObject::connect(this,SIGNAL(stop()),this,SLOT(finish()));
 }
 
 void MusicMaker::mainLoop(){
@@ -30,15 +23,6 @@ void MusicMaker::mainLoop(){
 	std::thread T(&MusicMaker::interpretTouch,this,&comm);
 
 	while (this->_goOn){
-
-		/* Initialisation */
-		/*
-		FMOD_SYSTEM *system;
-		FMOD_SOUND *musique;
-		FMOD_CHANNEL *canal;
-		FMOD_RESULT resultat;
-		*/
-
 		/* Nom de la musique actuelle */
 		std::string songName(this->_musics[this->_song]);
 
@@ -57,9 +41,6 @@ void MusicMaker::mainLoop(){
 			if(this->_port->isPortOk()){
 				songPlaying.getSpectrum(spectre,TAILLE_SPECTRE);
 				this->_port->sendData(this->_port->calculateValue(spectre,TAILLE_SPECTRE));
-				#ifdef __STATISTICS
-					++number_turn;
-				#endif
 				usleep(REFRESH);
 			}
 
@@ -76,20 +57,10 @@ void MusicMaker::mainLoop(){
 		}
 
 		songPlaying.stopSong();
-
-		#ifdef __STATISTICS
-			std::cout << "nb_turn : " << nb_turn << std::endl;
-			std::cout << "turn : " << turn << std::endl;
-		#endif // __STATISTICS
-
-			usleep(REFRESH);
-
+		usleep(REFRESH);
 		this->nextSong();
 	}
 	T.join();
-	#ifdef __STATISTICS
-		writeStat(STAT_FILE);
-	#endif
 }
 
 void MusicMaker::nextSong(){

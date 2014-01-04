@@ -11,8 +11,11 @@
 #include <QObject>
 #include <QString>
 
+#include "statFile.hpp"
 #include "qextserialport.h"
 
+#define MEDIAN_VALUE 3.4145444622483727
+#define STEP 0.635
 
 class PortSender : public QObject{
 

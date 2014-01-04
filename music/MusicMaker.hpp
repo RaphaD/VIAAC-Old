@@ -11,14 +11,12 @@
 #include <QApplication>
 #include <QObject>
 #include <QString>
-#include <QThread>
-
-#ifdef __STATISTICS
-#include "actionTreat.cpp"
-#endif // __STATISTICS
 
 #include "PortSender.hpp"
 #include "Song.hpp"
+
+#define TAILLE_SPECTRE 512
+#define REFRESH 21500
 
 class MusicMaker : public QObject{
 

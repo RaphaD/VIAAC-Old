@@ -1,14 +1,20 @@
 #include <iostream>
 
 #include "TimeHandler.hpp"
+#include "MusicMaker.hpp"
+
+//#define __VERBOSE
 
 int main()
 {
-	std::cout << "Hello World!" << std::endl;
+#ifdef __VERBOSE
+	std::cout << "========== Begin of VIAAC ==========" << std::endl;
+#endif
 	TimeHandler T;
-	T.showTime();
-	T.setProgram("30/12/2013 14:00:00 31/12/2013 8:00:00","Pré nouvel an");
-	T.getProgram("30/12/2013");
+#ifdef __VERBOSE
+	std::cout << " === Finished creating TimeHandler ===" << std::endl;
+#endif
+
 	return 0;
 }
 

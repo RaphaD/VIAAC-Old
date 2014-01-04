@@ -6,12 +6,16 @@
 #include <vector>
 #include <sstream>
 
+#include "C_MACRO.hpp"
 #include "Day.hpp"
 #include "TimeDB.hpp"
 #include "Activity.hpp"
+#include "CronTab.hpp"
 #include "libFunc.hpp"
 
+//#define __VERBOSE
 #define CALLENDAR_DB "./callendar/CALLENDAR.txt"
+#define CRONTAB_DB "./callendar/CRONTAB.txt"
 
 class TimeHandler
 {
@@ -26,7 +30,8 @@ class TimeHandler
 		void setProgram(std::string str1, std::string str2);
 
 	private :
-		TimeDB* _db;
+		TimeDB* _call;
+		CronTab* _cron;
 };
 
 #endif // __DEF_TIMEHANDLER_HPP

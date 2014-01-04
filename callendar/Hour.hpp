@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "C_MACRO.hpp"
 #include "libFunc.hpp"
 
 class Hour

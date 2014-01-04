@@ -1,0 +1,16 @@
+ ========== TICKETS ==========
+ 
+Améliorations :
+	- Ajouter ID pour la musique
+	- algo de tri au début de l'ouverture du dossier musique
+
+Optimisation :
+	- Créer fichier de macro pour le système de calcul statistique
+	- Créer classe abstraite Event dont hériteront Activity et Alarm reprennant les méthodes :
+		- maj
+		- writeInFile (redéfini dans classes filles)
+		- isSmaller (redéfini dans casses filles)
+
+Reconnaissance vocale : 
+	- Voir pq mauvais résultats pour CMUSphinx
+	- Tester CMUSphinx python

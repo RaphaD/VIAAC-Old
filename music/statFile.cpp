@@ -1,6 +1,11 @@
+#include "statFile.hpp"
+
 #ifdef __STATISTICS
-void openStat(const char* filename){
-	std::ifstream fichier(filename,std::ios::in);
+
+#define STAT_COUNT "STAT_FILE.txt"
+
+void openStat(long double& turn,long unsigned& number_turn){
+	std::ifstream fichier(STAT_COUNT,std::ios::in);
 
 	if(fichier){
 		std::string contenu;
@@ -16,8 +21,8 @@ void openStat(const char* filename){
 		std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
 }
 
-void writeStat(const char* filename){
-	std::ofstream fichier(filename, std::ios::out | std::ios::trunc);
+void writeStat(long double& turn,long unsigned& number_turn){
+	std::ofstream fichier(STAT_COUNT, std::ios::out | std::ios::trunc);
 
 	if(fichier){
 		fichier << turn << std::endl;
@@ -27,4 +32,4 @@ void writeStat(const char* filename){
 	}else
 		std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
 }
-#endif
+#endif //__STATISTICS

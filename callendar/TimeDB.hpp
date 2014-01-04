@@ -10,26 +10,30 @@
 #include <fstream>
 #include <algorithm>
 
+#include "C_MACRO.hpp"
+#include "DataBase.hpp"
+#include "Event.hpp"
 #include "Day.hpp"
 #include "Hour.hpp"
 #include "Activity.hpp"
 
 #define YEAR_BEGIN 1900
 
-class TimeDB
+class TimeDB : public DataBase
 {
 	public:
 		TimeDB(std::string DBName);
 
-		bool maj();
-
 		std::vector<Activity> search(Day& day);
 		std::vector<Activity> search(Day& day,Hour& hour);
 		void add(Activity acti);
-
+		void removeFromTable(std::string ind);
 		bool isSmaller(Activity const& acti1,Activity const& acti2);
-		time_t fillTm(Day day,Hour hour);
-		void writeInFile(Activity& acti,std::ofstream& flux);
+
+		bool isOlder(struct tm* time,Event* event);
+		void addToVector(std::vector<Event*>* events,std::vector<std::string>* inter);
+		void writeInFile(int ind,Event *event, std::ofstream &flux);
+
 	private:
 		std::string _dbFile;
 };

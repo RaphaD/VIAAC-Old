@@ -23,7 +23,11 @@ HEADERS += callendar/Activity.hpp \
            music/MusicMaker.hpp \
            music/PortSender.hpp \
            music/Song.hpp \
-           music/libTreater.cpp
+    callendar/CronTab.hpp \
+    callendar/Event.hpp \
+    callendar/DataBase.hpp \
+    callendar/C_MACRO.hpp \
+    music/statFile.hpp
 SOURCES += main.cpp \
            callendar/Activity.cpp \
            callendar/Day.cpp \
@@ -31,8 +35,11 @@ SOURCES += main.cpp \
            callendar/libFunc.cpp \
            callendar/TimeDB.cpp \
            callendar/TimeHandler.cpp \
-           music/libTreater.cpp \
            music/MusicMaker.cpp \
            music/PortSender.cpp \
            music/Song.cpp \
-           music/statFile.cpp
+           music/statFile.cpp \
+    music/libTreater.cpp \
+    callendar/CronTab.cpp \
+    callendar/Event.cpp \
+    callendar/DataBase.cpp

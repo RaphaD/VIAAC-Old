@@ -14,10 +14,13 @@ QMAKE_CXXFLAGS += -std=c++0x -g
 LIBS += -lfmod -pthread
 HEADERS += PortSender.hpp \
     MusicMaker.hpp \
-    Song.hpp
+    Song.hpp \
+    M_MACRO.hpp \
+	statFile.hpp
 
 SOURCES += PortSender.cpp \
     MusicMaker.cpp \
     statFile.cpp \
     Song.cpp \
-    libTreater.cpp
+    libTreater.cpp\
+    main.cpp

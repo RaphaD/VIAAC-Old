@@ -7,7 +7,11 @@ SOURCES += TimeHandler.cpp \
     Day.cpp \
     Activity.cpp \
     libFunc.cpp \
-    Hour.cpp
+    Hour.cpp \
+	CronTab.cpp \
+	Event.cpp \
+	DataBase.cpp \
+	main.cpp
 
 QMAKE_CXXFLAGS += -std=c++0x -g
 
@@ -17,5 +21,9 @@ HEADERS += \
     Day.hpp \
     Activity.hpp \
     libFunc.hpp \
-    Hour.hpp
+    Hour.hpp \
+	CronTab.hpp \
+	Event.hpp \
+	DataBase.hpp \
+	C_MACRO.hpp \
 

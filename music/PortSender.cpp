@@ -1,11 +1,13 @@
 #include "PortSender.hpp"
 
+#ifdef __STATISTICS
+long double turn(0);
+long unsigned number_turn(0);
+#endif //__STATISTICS
+
 #include <exception>
 #include <thread>
 #include <fstream>
-
-#define MEDIAN_VALUE 3.8533
-#define STEP 0.6
 
 PortSender::PortSender(QString &portName) : _isPortOk(true){
 	//on commence par créer l'objet port série
@@ -23,6 +25,10 @@ PortSender::PortSender(QString &portName) : _isPortOk(true){
 	this->_port->setDataBits(DATA_8);//nombre de bits de données
 	this->_port->setFlowControl(FLOW_OFF);//pas de contrôle de flux
 
+#ifdef __STATISTICS
+	openStat(turn,number_turn);
+#endif
+
 	try{
 		//on démarre !
 		this->_port->open(QextSerialPort::ReadWrite);
@@ -36,9 +42,10 @@ QString PortSender::calculateValue(float spectre[],int size){
 	float res(0);
 	for(int i(0);i<size;++i){
 		res+=spectre[i];
-	#ifdef __STATISTICS
-		turn+=res;
-	#endif
+#ifdef __STATISTICS
+	turn+=((res-MEDIAN_VALUE)**2);
+	++number_turn;
+#endif
 	}
 	return this->determineValue(res);
 }
@@ -77,5 +84,8 @@ void PortSender::sendData(QString toSend){
 }
 
 PortSender::~PortSender(){
+#ifdef __STATISTICS
+	writeStat(turn,number_turn);
+#endif
 	delete this->_port;
 }
