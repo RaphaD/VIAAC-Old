@@ -94,13 +94,14 @@ void MusicMaker::checkFile(std::vector<std::string> &musics,Song* song){
 		this->nextSong();
 		song=new Song(musics[this->_song]);
 	}
-	std::cout << "Now Playing ! : " << musics[this->_song] << std::endl << "Entry : ";
+	std::cout << "Now Playing : " << musics[this->_song] << std::endl;
 }
 
 void MusicMaker::interpretTouch(char* comm){
 	char inter('0');
 	while(inter!='q'){
 		inter='0';
+		std::cout << "Entry : " << std::endl;
 		std::cin >> inter;
 		if(this->isCommand(inter)){
 			*comm=inter;
@@ -140,5 +141,4 @@ void MusicMaker::showManual(){
 }
 
 MusicMaker::~MusicMaker(){
-//	delete this->_port;
 }

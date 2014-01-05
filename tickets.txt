@@ -1,16 +1,22 @@
  ========== TICKETS ==========
- 
-Améliorations :
-	- Ajouter ID pour la musique
-	- algo de tri au début de l'ouverture du dossier musique
 
-Optimisation :
-	- Créer fichier de macro pour le système de calcul statistique
-	- Créer classe abstraite Event dont hériteront Activity et Alarm reprennant les méthodes :
-		- maj
-		- writeInFile (redéfini dans classes filles)
-		- isSmaller (redéfini dans casses filles)
+TODO :
+	- CronTab::addToTable(std::string day,std::string hour,std::string name)
+	- Event CronTab::getNextAlarm(int ind)
+	- Event CronTab::getNextAlarm(Hour* hour,Day* day)
 
 Reconnaissance vocale : 
 	- Voir pq mauvais résultats pour CMUSphinx
 	- Tester CMUSphinx python
+
+Améliorations :
+	- Ajouter ID pour la musique
+	- algo de tri au début de l'ouverture du dossier musique
+	- Ajouter 2 fréquences au clignotement des LEDs
+
+Optimisation :
+V	- Créer fichier de macro pour le système de calcul statistique
+V	- Créer classe abstraite Event dont hériteront Activity et Alarm reprennant les méthodes :
+V		- maj
+V		- writeInFile (redéfini dans classes filles)
+V		- isSmaller (redéfini dans casses filles)

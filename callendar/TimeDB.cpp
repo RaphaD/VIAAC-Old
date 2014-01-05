@@ -58,6 +58,7 @@ std::vector<Activity> TimeDB::search(Day& day){
 	}
 #ifdef __VERBOSE
 	std::cout << "    3°) Closing file" << std::endl;
+	std::cout << "    End TimeDB::search(Day&)" << std::endl;
 #endif
 	fichierR.close();
 	return activities;
@@ -94,6 +95,7 @@ std::vector<Activity> TimeDB::search(Day& day,Hour& hour){
 	}
 #ifdef __VERBOSE
 	std::cout << "    3°) Closing file" << std::endl;
+	std::cout << "    End TimeDB::search(Day&,Hour&)" << std::endl;
 #endif
 	fichierR.close();
 	return activities;
@@ -143,10 +145,13 @@ void TimeDB::add(Activity actiP){
 	std::ofstream fichierW(this->_dbFile.c_str(), std::ios::out | std::ios::trunc);
 	for(unsigned i(0);i<activities.size();++i){
 #ifdef __VERBOSE
-	std::cout << "Loop 2) writting file : " << activities[i] << std::endl;
+	std::cout << "    Loop 2) writting file : " << activities[i] << std::endl;
 #endif
 		this->writeInFile(i,&activities[i],fichierW);
 	}
+#ifdef __VERBOSE
+	std::cout << "    End TimeDB::add(Activity)" << std::endl;
+#endif
 }
 
 bool TimeDB::isSmaller(Activity const& acti1,Activity const& acti2){
@@ -181,7 +186,7 @@ bool TimeDB::isSmaller(Activity const& acti1,Activity const& acti2){
 		}
 	}
 #ifdef __VERBOSE
-	std::cout << "4°) Case false" << std::endl;
+	std::cout << "    4°) Case false" << std::endl;
 #endif
 	return false;
 }
@@ -195,12 +200,12 @@ bool TimeDB::isOlder(struct tm* time,Event* event){
 	time_t end=this->fillTm(acti->getBeginDate(),acti->getBeginHour());
 	if(mktime(time)-end<0){
 #ifdef __VERBOSE
-	std::cout << "1°) Case true" << std::endl;
+	std::cout << "    1°) Case true" << std::endl;
 #endif
 		return true;
 	}else{
 #ifdef __VERBOSE
-	std::cout << "2°) Case false" << std::endl;
+	std::cout << "    2°) Case false" << std::endl;
 #endif
 		return false;
 	}
@@ -228,4 +233,7 @@ void TimeDB::writeInFile(int ind,Event *event,std::ofstream& flux){
 	flux << acti->getEndDate() << " #";
 	flux << acti->getEndHour() << " #";
 	flux << acti->getName() << " # \n";
+#ifdef __VERBOSE
+	std::cout << "    End TimeDB::writeInFile(Event*,std::ofstream&)" << std::endl;
+#endif
 }

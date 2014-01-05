@@ -26,7 +26,7 @@ void TimeHandler::showDate() const{
 				 YEAR_BEGIN+current->tm_year << std::endl;
 }
 
-void TimeHandler::getProgram(std::string com) const{
+void TimeHandler::getCallendar(std::string com) const{
 #ifdef __VERBOSE
 	std::cout << "[TimeHandler] TimeHandler::getProgram(std::string)" << std::endl;
 	std::cout << "Param : " << com << std::endl;
@@ -36,16 +36,16 @@ void TimeHandler::getProgram(std::string com) const{
 	if(inter.size()==2){
 		Day day(inter[0]);Hour hour(inter[1]);
 #ifdef __VERBOSE
-		std::cout << "Day and hour call" << std::endl;
-		std::cout << "Day : " << day << std::endl;
-		std::cout << "Hour : " << hour << std::endl;
+		std::cout << "    Day and hour call" << std::endl;
+		std::cout << "    Day : " << day << std::endl;
+		std::cout << "    Hour : " << hour << std::endl;
 #endif
 		res=this->_call->search(day,hour);
 	}else if(inter.size()==1){
 		Day day(inter[0]);
 #ifdef __VERBOSE
-		std::cout << "Day call" << std::endl;
-		std::cout << "Day : " << day << std::endl;
+		std::cout << "    Day call" << std::endl;
+		std::cout << "    Day : " << day << std::endl;
 #endif
 		res=this->_call->search(day);
 	}
@@ -55,7 +55,7 @@ void TimeHandler::getProgram(std::string com) const{
 	}
 }
 
-void TimeHandler::setProgram(std::string str1,std::string str2){
+void TimeHandler::setCallendar(std::string str1,std::string str2){
 #ifdef __VERBOSE
 	std::cout << "[TimeHandler] TimeHandler::setProgram(std::string,std::string)" << std::endl;
 	std::cout << "setProgram method with param : " << str1 << " " << str2 << std::endl;
@@ -66,11 +66,11 @@ void TimeHandler::setProgram(std::string str1,std::string str2){
 		Day eDay(inter[2]); Hour eHour(inter[3]);
 		std::string name(str2);
 #ifdef __VERBOSE
-		std::cout << "Good number of parameters" << std::endl;
-		std::cout << "begin Day : " << bDay << std::endl;
-		std::cout << "end Day : " << eDay << std::endl;
-		std::cout << "begin Hour : " << bHour << std::endl;
-		std::cout << "end Hour : " << eHour << std::endl;
+		std::cout << "    Good number of parameters" << std::endl;
+		std::cout << "    begin Day : " << bDay << std::endl;
+		std::cout << "    end Day : " << eDay << std::endl;
+		std::cout << "    begin Hour : " << bHour << std::endl;
+		std::cout << "    end Hour : " << eHour << std::endl;
 #endif
 		this->_call->add(Activity(0,name,bDay,eDay,bHour,eHour));
 	}
