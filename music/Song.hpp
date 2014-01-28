@@ -8,6 +8,7 @@
 class Song
 {
 public:
+	Song();
 	Song(std::string name);
 
 	void initSong();
@@ -22,11 +23,11 @@ public:
 	~Song();
 
 private :
-	std::string _name;
-	FMOD_SYSTEM *_system;
-	FMOD_SOUND *_musique;
-	FMOD_CHANNEL *_canal;
-	FMOD_RESULT _resultat;
+	std::string name_;
+	FMOD_SYSTEM *system_;
+	FMOD_SOUND *musique_;
+	FMOD_CHANNEL *canal_;
+	FMOD_RESULT resultat_;
 };
 
 #endif // SONG_HPP

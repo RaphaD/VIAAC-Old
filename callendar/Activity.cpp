@@ -1,9 +1,13 @@
 #include "Activity.hpp"
 
+// --------------------------------------------------------
+
 Activity::Activity() : Event::Event(0,Day(),Hour()),
 	_dEnd(Day()),_hEnd(Hour())
 {
 }
+
+// --------------------------------------------------------
 
 Activity::Activity(std::vector<std::string> vector){
 	for(unsigned i(0);i<vector.size();++i){
@@ -24,11 +28,15 @@ Activity::Activity(std::vector<std::string> vector){
 	this->_name=vector[5];
 }
 
+// --------------------------------------------------------
+
 Activity::Activity(int ind,std::string name,Day& dBegin,Day& dEnd,Hour& hBegin,Hour& hEnd ) : Event::Event(ind,dBegin,hBegin),
 	_dEnd(dEnd),_hEnd(hEnd)
 {
 	this->_name=name;
 }
+
+// --------------------------------------------------------
 
 std::ostream& operator <<(std::ostream& flux,Activity const& acti){
 	flux << "Date de début :" << acti.getBeginDate() << "\n";

@@ -1,5 +1,7 @@
 #include "libFunc.hpp"
 
+// --------------------------------------------------------
+
 struct tm* currentTime(){
 #ifdef __VERBOSE
 	std::cout << "[libFunc] currentTime()" << std::endl;
@@ -11,6 +13,8 @@ struct tm* currentTime(){
 #endif
 	return current;
 }
+
+// --------------------------------------------------------
 
 std::vector<std::string> toStdVector(std::string toConvert){
 #ifdef __VERBOSE
@@ -31,6 +35,8 @@ std::vector<std::string> toStdVector(std::string toConvert){
 	return tokens;
 }
 
+// --------------------------------------------------------
+
 std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
 #ifdef __VERBOSE
 	std::cout << "[libFunc] split(std::string const&,char,std::vector<std::string>)" << std::endl;
@@ -49,6 +55,7 @@ std::vector<std::string> &split(const std::string &s, char delim, std::vector<st
 	return elems;
 }
 
+// --------------------------------------------------------
 
 std::vector<std::string> split(const std::string &s, char delim) {
 #ifdef __VERBOSE

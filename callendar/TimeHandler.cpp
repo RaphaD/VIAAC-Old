@@ -1,10 +1,20 @@
 #include "TimeHandler.hpp"
 
+// --------------------------------------------------------
+
 TimeHandler::TimeHandler():
-	_call(new TimeDB(CALLENDAR_DB)),_cron(new CronTab(CRONTAB_DB))
+	_call(new TimeDB(CALLENDAR_DB)), _cron(new CronTab(CRONTAB_DB))
 {
 #ifdef __VERBOSE
 	std::cout << "[TimeHandler] TimeHandler::TimeHandler()" << std::cout;
+#endif
+}
+
+TimeHandler::TimeHandler(std::string callendar,std::string crontab):
+	_call(new TimeDB(callendar)),_cron(new CronTab(crontab))
+{
+#ifdef __VERBOSE
+	std::cout << "[TimeHandler] TimeHandler::TimeHandler(std::string,std::string)" << std::cout;
 #endif
 }
 
@@ -25,6 +35,8 @@ void TimeHandler::showDate() const{
 				 current->tm_mon+1 << "/" <<
 				 YEAR_BEGIN+current->tm_year << std::endl;
 }
+
+// --------------------------------------------------------
 
 void TimeHandler::getCallendar(std::string com) const{
 #ifdef __VERBOSE
@@ -54,6 +66,8 @@ void TimeHandler::getCallendar(std::string com) const{
 		std::cout << "===================" << std::endl;
 	}
 }
+
+// --------------------------------------------------------
 
 void TimeHandler::setCallendar(std::string str1,std::string str2){
 #ifdef __VERBOSE

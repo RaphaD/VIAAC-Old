@@ -1,6 +1,6 @@
 #include "TimeDB.hpp"
 
-// jockey-backend
+// --------------------------------------------------------
 
 TimeDB::TimeDB(std::string DBName) :
 	DataBase::DataBase(DBName)
@@ -14,6 +14,8 @@ TimeDB::TimeDB(std::string DBName) :
 		std::cout << "Erreur lors de la MAJ de la base de données" << std::endl;
 	}
 }
+
+// --------------------------------------------------------
 
 std::vector<Activity> TimeDB::search(Day& day){
 #ifdef __VERBOSE
@@ -64,6 +66,8 @@ std::vector<Activity> TimeDB::search(Day& day){
 	return activities;
 }
 
+// --------------------------------------------------------
+
 std::vector<Activity> TimeDB::search(Day& day,Hour& hour){
 #ifdef __VERBOSE
 	std::cout << "[TimeDB] TimeDB::search(Day&,Hour&)" << std::endl;
@@ -100,6 +104,8 @@ std::vector<Activity> TimeDB::search(Day& day,Hour& hour){
 	fichierR.close();
 	return activities;
 }
+
+// --------------------------------------------------------
 
 void TimeDB::add(Activity actiP){
 #ifdef __VERBOSE
@@ -154,6 +160,8 @@ void TimeDB::add(Activity actiP){
 #endif
 }
 
+// --------------------------------------------------------
+
 bool TimeDB::isSmaller(Activity const& acti1,Activity const& acti2){
 #ifdef __VERBOSE
 	std::cout << "[TimeDB] TimeDB::isSmaller(Activity&,Activity&)" << std::endl;
@@ -191,6 +199,8 @@ bool TimeDB::isSmaller(Activity const& acti1,Activity const& acti2){
 	return false;
 }
 
+// --------------------------------------------------------
+
 bool TimeDB::isOlder(struct tm* time,Event* event){
 #ifdef __VERBOSE
 	std::cout << "[TimeDB] TimeDB::isOlder(struct tm*,Event*)" << std::endl;
@@ -210,6 +220,8 @@ bool TimeDB::isOlder(struct tm* time,Event* event){
 		return false;
 	}
 }
+
+// --------------------------------------------------------
 
 void TimeDB::addToVector(std::vector<Event*>* events,std::vector<std::string>* inter){
 #ifdef __VERBOSE

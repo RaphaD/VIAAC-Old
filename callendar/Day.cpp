@@ -1,19 +1,27 @@
 #include "Day.hpp"
 
+// --------------------------------------------------------
+
 Day::Day() :
 	_numbVal(0),_monthVal(0),_yearVal(0)
 {
 }
 
+// --------------------------------------------------------
+
 Day::Day(int number,int month) :
-	_numbVal(number),_monthVal(month),_yearVal(2013)
+	_numbVal(number),_monthVal(month),_yearVal(currentTime()->tm_year)
 {
 }
+
+// --------------------------------------------------------
 
 Day::Day(int number,int month,int year) :
 	_numbVal(number),_monthVal(month),_yearVal(year)
 {
 }
+
+// --------------------------------------------------------
 
 Day::Day(std::string str){
 	std::vector<std::string> values=split(str,'/');
@@ -22,11 +30,15 @@ Day::Day(std::string str){
 	this->_yearVal=atoi(values[2].c_str());
 }
 
+// --------------------------------------------------------
+
 std::string Day::toStr() const{
 	std::string res=std::to_string(this->_numbVal)+"/"+
 			std::to_string(this->_monthVal)+"/"+std::to_string(this->_yearVal);
 	return res;
 }
+
+// --------------------------------------------------------
 
 std::ostream& operator <<(std::ostream& flux,Day const& day) {
 	flux << day.toStr();

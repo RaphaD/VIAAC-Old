@@ -25,6 +25,7 @@ class TimeHandler
 {
 	public:
 		TimeHandler();
+		TimeHandler(std::string,std::string);
 
 		void showDate() const;
 		void showTime() const;

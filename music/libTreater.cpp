@@ -14,9 +14,10 @@ std::vector<std::string> getNames(std::string filename){
 		std::cout << "File not found " << std::endl;
 	while((entry=readdir(dir))!= NULL){
 		if(isMP3(entry->d_name)){
-			res.push_back(MUSIC_LIB+std::string(entry->d_name));
+			res.push_back(filename+std::string(entry->d_name));
 		}
 	}
+	std::sort(res.begin(),res.end());
 	closedir(dir);
 	return res;
 }

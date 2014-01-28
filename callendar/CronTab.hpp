@@ -17,13 +17,11 @@ class CronTab : public DataBase
 	public:
 		CronTab(std::string name);
 
-		//void maj();
-		void addToTable(std::string day,std::string hour,std::string name);
-		//void removeFromTable(int id);
-		//void removeFromTable(Day& day,Hour& hour);
-		//Event getNextAlarm(int ind);
-		//Event getNextAlarm(Day& day,Hour& hour);
+		void addToTable(Event event);
+		time_t getNextAlarm(int ind);
 
+		time_t getNextIte(Event &event);
+		bool isRepetitive(Event& event);
 		bool isOlder(struct tm* time,Event* event);
 		void addToVector(std::vector<Event*>* events,std::vector<std::string>* inter);
 		void writeInFile(int ind,Event *event,std::ofstream& flux);

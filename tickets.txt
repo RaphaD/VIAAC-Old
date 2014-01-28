@@ -7,7 +7,7 @@ TODO :
 
 Reconnaissance vocale : 
 	- Voir pq mauvais résultats pour CMUSphinx
-	- Tester CMUSphinx python
+	- Tester SMUSphinx python
 
 Améliorations :
 	- Ajouter ID pour la musique

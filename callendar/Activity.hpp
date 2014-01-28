@@ -9,8 +9,6 @@
 #include "Hour.hpp"
 #include "libFunc.hpp"
 
-#define HASH_POS 3
-
 class Activity : public Event
 {
 	public:

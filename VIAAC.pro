@@ -9,7 +9,10 @@ INCLUDEPATH += . callendar music
 
 include(/usr/include/qextserialport/src/qextserialport.pri) #for qextserialport !
 # Input
-QMAKE_CXXFLAGS += -std=c++0x -g
+QMAKE_CXXFLAGS += -std=c++11 -g
+QMAKE_CC = gcc-4.8
+QMAKE_CXX = g++-4.8
+
 LIBS += -lfmod
 
 # Input
@@ -27,7 +30,8 @@ HEADERS += callendar/Activity.hpp \
     callendar/Event.hpp \
     callendar/DataBase.hpp \
     callendar/C_MACRO.hpp \
-    music/statFile.hpp
+    music/statFile.hpp \
+    AppHandler.hpp
 SOURCES += main.cpp \
            callendar/Activity.cpp \
            callendar/Day.cpp \
@@ -42,4 +46,5 @@ SOURCES += main.cpp \
     music/libTreater.cpp \
     callendar/CronTab.cpp \
     callendar/Event.cpp \
-    callendar/DataBase.cpp
+    callendar/DataBase.cpp \
+    AppHandler.cpp

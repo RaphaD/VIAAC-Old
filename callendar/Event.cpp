@@ -1,19 +1,27 @@
 #include "Event.hpp"
 
+// --------------------------------------------------------
+
 Event::Event() :
 	_id(0),_dBegin(Day()),_hBegin(Hour())
 {
 }
+
+// --------------------------------------------------------
 
 Event::Event(int ind,Day day,Hour hour) :
 	_id(ind),_dBegin(day),_hBegin(hour)
 {
 }
 
+// --------------------------------------------------------
+
 Event::Event(int ind,std::string day,std::string hour, std::string name) :
 	_id(ind),_dBegin(day),_hBegin(hour),_name(name)
 {
 }
+
+// --------------------------------------------------------
 
 Event::Event(std::vector<std::string> vector)
 {
@@ -28,8 +36,12 @@ Event::Event(std::vector<std::string> vector)
 	this->_name=vector[3];
 }
 
+// --------------------------------------------------------
+
 Event::~Event(){
 }
+
+// --------------------------------------------------------
 
 std::ostream& operator << (std::ostream& flux,Event const& day){
 	flux << "ID : " << day.getId() << std::endl;

@@ -6,8 +6,9 @@
 #include <dirent.h>
 #include <vector>
 #include <string.h>
+#include <algorithm>
 
-#define MUSIC_LIB "./music/"
+//#define MUSIC_LIB "./music/"
 
 bool isMP3(char file[]);
 std::vector<std::string> getNames(std::string filename);

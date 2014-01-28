@@ -1,8 +1,12 @@
 #include "DataBase.hpp"
 
+// --------------------------------------------------------
+
 DataBase::DataBase(std::string name) : _dbName(name)
 {
 }
+
+// --------------------------------------------------------
 
 bool DataBase::maj(){
 #ifdef __VERBOSE
@@ -55,6 +59,8 @@ bool DataBase::maj(){
 	return true;
 }
 
+// --------------------------------------------------------
+
 void DataBase::removeFromTable(int id){
 #ifdef __VERBOSE
 	std::cout << "[DataBase] DataBase::removeFromTable(int)" << std::endl;
@@ -104,6 +110,8 @@ void DataBase::removeFromTable(int id){
 #endif
 }
 
+// --------------------------------------------------------
+
 std::string DataBase::isEventSmaller(Event const& first, Event const& second){
 #ifdef __VERBOSE
 	std::cout << "[DataBase] DataBase::isEventSmaller(Event const&,Event const&)" << std::endl;
@@ -127,6 +135,8 @@ std::string DataBase::isEventSmaller(Event const& first, Event const& second){
 		return "false";
 	}
 }
+
+// --------------------------------------------------------
 
 time_t DataBase::fillTm(Day day,Hour hour){
 #ifdef __VERBOSE
