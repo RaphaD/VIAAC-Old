@@ -1,5 +1,10 @@
 #include "Song.hpp"
 
+   #include <unistd.h>
+   #include <stdio.h>
+   #include <errno.h>
+
+
 Song::Song() :
 	name_("")
 {

@@ -4,14 +4,14 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-#include <thread>
 #include <fmod/fmod.h>
 
 #include <QObject>
 #include <QString>
+//#include <QtSerialPort/QtSerialPort>
 
-#include "statFile.hpp"
 #include "qextserialport.h"
+#include "statFile.hpp"
 
 //#define MEDIAN_VALUE 3.4145444622483727
 //#define ECART_TYPE 3.3384111568800794
@@ -21,25 +21,25 @@
 
 class PortSender : public QObject{
 
-	Q_OBJECT
+    Q_OBJECT
 
-	public :
-		PortSender(QString portName);
+    public :
+        PortSender(QString portName);
 
-		void sendData(QString toSend);
+        void sendData(QString toSend);
 
-		QString calculateValue(float spectre[],int size);
-		QString determineValue(float an);
+        QString calculateValue(float spectre[],int size);
+        QString determineValue(float an);
 
-		bool isPortOk() const{
-			return this->isPortOk_;
-		}
+        bool isPortOk() const{
+            return this->isPortOk_;
+        }
 
-		~PortSender();
+        ~PortSender();
 
-	private:
-		QextSerialPort *port_;
-		bool isPortOk_;
+    private:
+        QextSerialPort *port_;
+        bool isPortOk_;
 
 };
 

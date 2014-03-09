@@ -7,6 +7,7 @@ MusicMaker::MusicMaker(std::string port,std::string music) :
 {
 	std::cout << "MusicMaker::MusicMaker(std::string port,std::string music)" << std::endl;
 }
+
 MusicMaker::MusicMaker(PortSender* port,std::vector<std::string>& res) :
 	port_(port),musics_(res),commands_(std::vector<char>()),goOn_(true),song_(0),
 	songPlaying_(new Song()),comm_('0')

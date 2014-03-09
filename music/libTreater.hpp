@@ -1,5 +1,5 @@
-#ifndef LIBTREATER_HPP
-#define LIBTREATER_HPP
+#ifndef __LIBTREATER_HPP
+#define __LIBTREATER_HPP
 
 #include <iostream>
 #include <sys/types.h>

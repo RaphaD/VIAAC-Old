@@ -7,16 +7,20 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 
-include(/usr/include/qextserialport/src/qextserialport.pri) #for qextserialport !
+QMAKE_CXXFLAGS += -std=c++11 -g
+QMAKE_CC = gcc-4.8
+QMAKE_CXX = g++-4.8
+
+LIBS += -lfmod -pthread
+
+# include(/usr/include/qextserialport/src/qextserialport.pri) #for qextserialport !
 
 # Input
-QMAKE_CXXFLAGS += -std=c++0x -g
-LIBS += -lfmod -pthread
 HEADERS += PortSender.hpp \
     MusicMaker.hpp \
     Song.hpp \
     M_MACRO.hpp \
-	statFile.hpp
+    statFile.hpp
 
 SOURCES += PortSender.cpp \
     MusicMaker.cpp \

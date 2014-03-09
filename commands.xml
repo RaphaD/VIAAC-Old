@@ -1,0 +1,11 @@
+<command music>
+start
+stop
+pause
+next
+previous
+</command>
+<command feed_fish>
+</command>
+<command show_command_tree>
+</command>
