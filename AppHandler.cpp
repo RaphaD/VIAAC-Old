@@ -84,5 +84,5 @@ void AppHandler::colorHandle(std::string color){
 	else if(color=="white")
 		this->port_->sendData("W");
 	else if(color=="none")
-		this->port_->sendData("");
+		this->port_->sendData("N");
 }
