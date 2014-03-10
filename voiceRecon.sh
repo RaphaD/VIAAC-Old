@@ -7,6 +7,7 @@ echo " === START ==="
 JSON=`arecord -f cd -t wav -d 3 -r 16000 | flac - -f --best --sample-rate 16000 -o out.flac;\
 wget -O - -o /dev/null --post-file out.flac --header="Content-Type: audio/x-flac; rate=16000" "$API"`
 
+echo "JSON is $JSON"
 echo "=== JSON FINISHED ==="
 
 UTTERANCE=`echo $JSON\
@@ -20,7 +21,7 @@ CMD_MUSIC_START="start music"
 CMD_MUSIC_STOP="stop music"
 CMD_NEXT_SONG="next song"
 CMD_PREV_SONG="previous song"
-CMD_PAUSE_SONG="interruption song"
+CMD_PAUSE_SONG="stop song"
 
 command=0
 

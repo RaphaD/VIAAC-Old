@@ -1,14 +1,14 @@
 #include "MusicMaker.hpp"
 
 MusicMaker::MusicMaker(std::string port,std::string music) :
-	port_(new PortSender(QString::fromStdString(port))),musics_(getNames(music)),
+	port_(new MusicPort(QString::fromStdString(port))),musics_(getNames(music)),
 	commands_(std::vector<char>()),goOn_(true),song_(0),songPlaying_(new Song()),
 	comm_('0')
 {
 	std::cout << "MusicMaker::MusicMaker(std::string port,std::string music)" << std::endl;
 }
 
-MusicMaker::MusicMaker(PortSender* port,std::vector<std::string>& res) :
+MusicMaker::MusicMaker(MusicPort* port,std::vector<std::string>& res) :
 	port_(port),musics_(res),commands_(std::vector<char>()),goOn_(true),song_(0),
 	songPlaying_(new Song()),comm_('0')
 	{
@@ -16,6 +16,13 @@ MusicMaker::MusicMaker(PortSender* port,std::vector<std::string>& res) :
 	this->commands_.push_back('p');
 	this->commands_.push_back('s');
 	this->commands_.push_back('q');
+}
+
+MusicMaker::MusicMaker(PortHandler* port,std::string music) :
+	port_(new MusicPort(port)),musics_(getNames(music)),
+	commands_(std::vector<char>()),goOn_(true),song_(0),
+	songPlaying_(new Song()),comm_('0')
+{
 }
 
 void MusicMaker::mainLoop(){

@@ -1,7 +1,7 @@
 #include "AppHandler.hpp"
 
 AppHandler::AppHandler() :
-	isMusic_(false)
+	isMusic_(false),port_(new PortHandler(QString::fromStdString(PORT_NAME)))
 {
 }
 
@@ -12,6 +12,8 @@ void AppHandler::handle(std::string command){
 void AppHandler::handle(std::vector<std::string> command,int mPere_mFils[2]){
 	if(command[0]=="music"){
 		this->musicHandle(command[1],mPere_mFils);
+	}else if(command[0]=="color"){
+		this->colorHandle(command[1]);
 	}
 }
 
@@ -53,7 +55,7 @@ void AppHandler::forkMusic(int mPere_mFils[2]){
 void AppHandler::launchMusic(int *mPere_mFils){
 	close(mPere_mFils[1]);
 	char val;
-	MusicMaker M(PORT_NAME,MUSIC_FILE);
+	MusicMaker M(this->port_,MUSIC_FILE);
 	std::thread t(&AppHandler::playMusic,this,&M);
 	while(val!='q'){
 		read(mPere_mFils[0],(void*) &val,sizeof(char));
@@ -64,4 +66,23 @@ void AppHandler::launchMusic(int *mPere_mFils){
 
 void AppHandler::playMusic(MusicMaker* M){
 	M->mainLoop();
+}
+
+void AppHandler::colorHandle(std::string color){
+	if(color=="red")
+		this->port_->sendData("R");
+	else if(color=="green")
+		this->port_->sendData("G");
+	else if(color=="blue")
+		this->port_->sendData("B");
+	else if(color=="yellow")
+		this->port_->sendData("Y");
+	else if(color=="light_blue")
+		this->port_->sendData("L");
+	else if(color=="purple")
+		this->port_->sendData("P");
+	else if(color=="white")
+		this->port_->sendData("W");
+	else if(color=="none")
+		this->port_->sendData("");
 }

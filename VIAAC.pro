@@ -17,22 +17,24 @@ LIBS+= -lfmod
 # Input
 HEADERS += Command.hpp \
 		   AppHandler.hpp \
+		   PortHandler.hpp \
 		   CommandInterpretor.hpp \
 		   VoiceInterpretor.hpp \
 		   music/libTreater.hpp \
 		   music/M_MACRO.hpp \
 		   music/MusicMaker.hpp \
-		   music/PortSender.hpp \
+		   music/MusicPort.hpp \
 		   music/Song.hpp \
 		   music/statFile.hpp \
 		   music/libTreater.cpp
 SOURCES += Command.cpp \
 		   AppHandler.cpp \
+		   PortHandler.cpp \
 		   CommandInterpretor.cpp \
 		   main.cpp \
 		   VoiceInterpretor.cpp \
 		   music/libTreater.cpp \
 		   music/MusicMaker.cpp \
-		   music/PortSender.cpp \
+		   music/MusicPort.cpp \
 		   music/Song.cpp \
 		   music/statFile.cpp

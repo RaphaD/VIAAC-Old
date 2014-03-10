@@ -1,17 +1,18 @@
-#ifndef __DEF_PORT_SENDER
-#define __DEF_PORT_SENDER
+#ifndef __DEF_MUSIC_PORT
+#define __DEF_MUSIC_PORT
 
 #include <iostream>
 #include <vector>
 #include <cstdlib>
 #include <fmod/fmod.h>
+#include <exception>
+#include <fstream>
 
-#include <QObject>
 #include <QString>
-//#include <QtSerialPort/QtSerialPort>
 
 #include "qextserialport.h"
 #include "statFile.hpp"
+#include "../PortHandler.hpp"
 
 //#define MEDIAN_VALUE 3.4145444622483727
 //#define ECART_TYPE 3.3384111568800794
@@ -19,28 +20,16 @@
 // P[V<=x]=0.95 => x=6 => STEP=6/11=0.6
 #define STEP 0.545454545454
 
-class PortSender : public QObject{
-
-    Q_OBJECT
-
+class MusicPort : public PortHandler
+{
     public :
-        PortSender(QString portName);
-
-        void sendData(QString toSend);
+    	MusicPort(PortHandler* port);
+        MusicPort(QString portName);
 
         QString calculateValue(float spectre[],int size);
         QString determineValue(float an);
 
-        bool isPortOk() const{
-            return this->isPortOk_;
-        }
-
-        ~PortSender();
-
-    private:
-        QextSerialPort *port_;
-        bool isPortOk_;
-
+      	~MusicPort();
 };
 
-#endif // __DEF_PORT_SENDER
+#endif // __DEF_MUSIC_PORT

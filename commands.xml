@@ -9,3 +9,13 @@ previous
 </command>
 <command show_command_tree>
 </command>
+<command color>
+blue
+red
+green
+purple
+yellow
+light_blue
+white
+none
+</command>

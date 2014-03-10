@@ -10,24 +10,22 @@
 #include <time.h>
 #include <stdio.h>
 #include <unistd.h>
-
-#include <QObject>
 #include <QString>
 
-#include "PortSender.hpp"
+#include "PortHandler.hpp"
+#include "MusicPort.hpp"
 #include "Song.hpp"
 #include "libTreater.hpp"
 
 #define TAILLE_SPECTRE 512
 #define REFRESH 10000
 
-class MusicMaker : public QObject{
-
-    Q_OBJECT
-
+class MusicMaker
+{
     public :
         MusicMaker(std::string port,std::string music);
-        MusicMaker(PortSender* port,std::vector<std::string>& res);
+        MusicMaker(MusicPort* port,std::vector<std::string>& res);
+        MusicMaker(PortHandler* port,std::string music);
 
         void nextSong();
         void previousSong();
@@ -48,7 +46,7 @@ class MusicMaker : public QObject{
         ~MusicMaker();
 
     private :
-        PortSender* port_;
+        MusicPort* port_;
         std::vector<std::string> musics_;
         std::vector<char> commands_;
         bool goOn_;
